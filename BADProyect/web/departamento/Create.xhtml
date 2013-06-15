@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DepartamentoCreateDlg" widgetVar="DepartamentoCreateDialog" modal="true" resizable="false" appendToBody="true" header="#{bundle.CreateDepartamentoTitle}">
+
+            <h:form id="DepartamentoCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{departamentoController.selected != null}">
+
+                        <p:outputLabel value="#{bundle.CreateDepartamentoLabel_iddepartamento}" for="iddepartamento" />
+                        <p:inputText id="iddepartamento" value="#{departamentoController.selected.iddepartamento}" title="#{bundle.CreateDepartamentoTitle_iddepartamento}" required="true" requiredMessage="#{bundle.CreateDepartamentoRequiredMessage_iddepartamento}"/>
+
+                        <p:outputLabel value="#{bundle.CreateDepartamentoLabel_nombredepartamento}" for="nombredepartamento" />
+                        <p:inputText id="nombredepartamento" value="#{departamentoController.selected.nombredepartamento}" title="#{bundle.CreateDepartamentoTitle_nombredepartamento}" />
+
+                        <p:outputLabel value="#{bundle.CreateDepartamentoLabel_descripciondepartamento}" for="descripciondepartamento" />
+                        <p:inputText id="descripciondepartamento" value="#{departamentoController.selected.descripciondepartamento}" title="#{bundle.CreateDepartamentoTitle_descripciondepartamento}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{departamentoController.saveNew}" value="#{bundle.Save}" update="display,:DepartamentoListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,DepartamentoCreateDialog);"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DepartamentoCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>
