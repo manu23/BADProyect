@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class PropuestaFacade extends AbstractFacade<Propuesta> {
-    @PersistenceContext(unitName = "BADProyectPU")
+    @PersistenceContext(unitName = "asignatura")
     private EntityManager em;
 
     @Override

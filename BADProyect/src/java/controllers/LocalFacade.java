@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class LocalFacade extends AbstractFacade<Local> {
-    @PersistenceContext(unitName = "BADProyectPU")
+    @PersistenceContext(unitName = "asignatura")
     private EntityManager em;
 
     @Override
