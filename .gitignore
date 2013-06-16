@@ -4,3 +4,5 @@
 *.jar
 *.war
 *.ear
+/BADProyect/nbproject/private/
+/BADProyect/build/
