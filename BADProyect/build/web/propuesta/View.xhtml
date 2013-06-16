@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PropuestaViewDlg" widgetVar="PropuestaViewDialog" modal="true" resizable="false" appendToBody="true" header="#{bundle.ViewPropuestaTitle}">
+
+            <h:form id="PropuestaViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{propuestaController.selected != null}">
+
+                        <h:outputText value="#{bundle.ViewPropuestaLabel_idpropuesta}"/>
+                        <h:outputText value="#{propuestaController.selected.idpropuesta}" title="#{bundle.ViewPropuestaTitle_idpropuesta}"/>
+
+                        <h:outputText value="#{bundle.ViewPropuestaLabel_fechapropuesta}"/>
+                        <h:outputText value="#{propuestaController.selected.fechapropuesta}" title="#{bundle.ViewPropuestaTitle_fechapropuesta}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{bundle.ViewPropuestaLabel_detalle}"/>
+                        <h:outputText value="#{propuestaController.selected.detalle}" title="#{bundle.ViewPropuestaTitle_detalle}"/>
+
+                        <h:outputText value="#{bundle.ViewPropuestaLabel_justificacion}"/>
+                        <h:outputText value="#{propuestaController.selected.justificacion}" title="#{bundle.ViewPropuestaTitle_justificacion}"/>
+
+                        <h:outputText value="#{bundle.ViewPropuestaLabel_aprobadojefe}"/>
+                        <h:outputText value="#{propuestaController.selected.aprobadojefe}" title="#{bundle.ViewPropuestaTitle_aprobadojefe}"/>
+
+                        <h:outputText value="#{bundle.ViewPropuestaLabel_aprobadodirector}"/>
+                        <h:outputText value="#{propuestaController.selected.aprobadodirector}" title="#{bundle.ViewPropuestaTitle_aprobadodirector}"/>
+
+                        <h:outputText value="#{bundle.ViewPropuestaLabel_aprobadojunta}"/>
+                        <h:outputText value="#{propuestaController.selected.aprobadojunta}" title="#{bundle.ViewPropuestaTitle_aprobadojunta}"/>
+
+                        <h:outputText value="#{bundle.ViewPropuestaLabel_materiaCollection}"/>
+
+                        <h:outputText value="#{bundle.ViewPropuestaLabel_iddocente}"/>
+                        <h:outputText value="#{propuestaController.selected.iddocente.iddocente}"/>
+
+                        <h:outputText value="#{bundle.ViewPropuestaLabel_cargo}"/>
+                        <h:outputText value="#{propuestaController.selected.cargo.cargoPK}"/>
+
+                        <h:outputText value="#{bundle.ViewPropuestaLabel_recursosCollection}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="PropuestaViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

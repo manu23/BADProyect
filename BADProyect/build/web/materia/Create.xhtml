@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MateriaCreateDlg" widgetVar="MateriaCreateDialog" modal="true" resizable="false" appendToBody="true" header="#{bundle.CreateMateriaTitle}">
+
+            <h:form id="MateriaCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{materiaController.selected != null}">
+
+                        <p:outputLabel value="#{bundle.CreateMateriaLabel_materiaPK_codigomateria}" for="materiaPK_codigomateria" />
+                        <p:inputText id="materiaPK_codigomateria" value="#{materiaController.selected.materiaPK.codigomateria}" title="#{bundle.CreateMateriaTitle_materiaPK_codigomateria}" required="true" requiredMessage="#{bundle.CreateMateriaRequiredMessage_materiaPK_codigomateria}"/>
+
+                        <p:outputLabel value="#{bundle.CreateMateriaLabel_nombremateria}" for="nombremateria" />
+                        <p:inputText id="nombremateria" value="#{materiaController.selected.nombremateria}" title="#{bundle.CreateMateriaTitle_nombremateria}" />
+
+                        <p:outputLabel value="#{bundle.CreateMateriaLabel_uv}" for="uv" />
+                        <p:inputText id="uv" value="#{materiaController.selected.uv}" title="#{bundle.CreateMateriaTitle_uv}" />
+
+                        <p:outputLabel value="#{bundle.CreateMateriaLabel_cicloimparte}" for="cicloimparte" />
+                        <p:inputText id="cicloimparte" value="#{materiaController.selected.cicloimparte}" title="#{bundle.CreateMateriaTitle_cicloimparte}" />
+
+                        <p:outputLabel value="#{bundle.CreateMateriaLabel_tipomateria}" for="tipomateria" />
+                        <p:inputText id="tipomateria" value="#{materiaController.selected.tipomateria}" title="#{bundle.CreateMateriaTitle_tipomateria}" />
+
+                        <p:outputLabel value="#{bundle.CreateMateriaLabel_numhorasprac}" for="numhorasprac" />
+                        <p:inputText id="numhorasprac" value="#{materiaController.selected.numhorasprac}" title="#{bundle.CreateMateriaTitle_numhorasprac}" />
+
+                        <p:outputLabel value="#{bundle.CreateMateriaLabel_numhorasteo}" for="numhorasteo" />
+                        <p:inputText id="numhorasteo" value="#{materiaController.selected.numhorasteo}" title="#{bundle.CreateMateriaTitle_numhorasteo}" />
+
+                        <p:outputLabel value="#{bundle.CreateMateriaLabel_propuesta}" for="propuesta" />
+                        <p:selectOneMenu id="propuesta" value="#{materiaController.selected.propuesta}" required="true" requiredMessage="#{bundle.EditMateriaRequiredMessage_propuesta}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{propuestaController.items}"
+                                           var="propuestaItem"
+                                           itemValue="#{propuestaItem}"
+                                           itemLabel="#{propuestaItem.idpropuesta.toString()}"
+                                           />
+                            <f:converter binding="#{propuestaConverter}"/>
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{bundle.CreateMateriaLabel_idpensum}" for="idpensum" />
+                        <p:selectOneMenu id="idpensum" value="#{materiaController.selected.idpensum}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{pensumController.items}"
+                                           var="idpensumItem"
+                                           itemValue="#{idpensumItem}"
+                                           itemLabel="#{idpensumItem.idpensum.toString()}"
+                                           />
+                            <f:converter binding="#{pensumConverter}"/>
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{bundle.CreateMateriaLabel_iddocente}" for="iddocente" />
+                        <p:selectOneMenu id="iddocente" value="#{materiaController.selected.iddocente}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{docenteController.items}"
+                                           var="iddocenteItem"
+                                           itemValue="#{iddocenteItem}"
+                                           itemLabel="#{iddocenteItem.iddocente.toString()}"
+                                           />
+                            <f:converter binding="#{docenteConverter}"/>
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{bundle.CreateMateriaLabel_prerrequisito}" for="prerrequisito" />
+                        <p:selectOneMenu id="prerrequisito" value="#{materiaController.selected.prerrequisito}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{prerrequisitoController.items}"
+                                           var="prerrequisitoItem"
+                                           itemValue="#{prerrequisitoItem}"
+                                           itemLabel="#{prerrequisitoItem.prerrequisitoPK.toString()}"
+                                           />
+                            <f:converter binding="#{prerrequisitoConverter}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{materiaController.saveNew}" value="#{bundle.Save}" update="display,:MateriaListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,MateriaCreateDialog);"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="MateriaCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>
