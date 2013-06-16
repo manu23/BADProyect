@@ -19,7 +19,7 @@
                         <p:inputText id="idpropuesta" value="#{propuestaController.selected.idpropuesta}" title="#{bundle.CreatePropuestaTitle_idpropuesta}" required="true" requiredMessage="#{bundle.CreatePropuestaRequiredMessage_idpropuesta}"/>
 
                         <p:outputLabel value="#{bundle.CreatePropuestaLabel_fechapropuesta}" for="fechapropuesta" />
-                        <p:calendar id="fechapropuesta" pattern="MM/dd/yyyy HH:mm:ss" value="#{propuestaController.selected.fechapropuesta}" title="#{bundle.EditPropuestaTitle_fechapropuesta}" required="true" requiredMessage="#{bundle.EditPropuestaRequiredMessage_fechapropuesta}" showOn="button"/>
+                        <p:calendar id="fechapropuesta" pattern="MM/dd/yyyy" value="#{propuestaController.selected.fechapropuesta}" title="#{bundle.EditPropuestaTitle_fechapropuesta}" required="true" requiredMessage="#{bundle.EditPropuestaRequiredMessage_fechapropuesta}" showOn="button"/>
 
                         <p:outputLabel value="#{bundle.CreatePropuestaLabel_detalle}" for="detalle" />
                         <p:inputTextarea rows="4" cols="30" id="detalle" value="#{propuestaController.selected.detalle}" title="#{bundle.CreatePropuestaTitle_detalle}" required="true" requiredMessage="#{bundle.CreatePropuestaRequiredMessage_detalle}"/>

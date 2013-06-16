@@ -15,7 +15,7 @@
                          rowKey="#{item.idpropuesta}"
                          paginator="true"
                          rows="10"
-                         rowsPerPageTemplate="10,20,30"
+                         rowsPerPageTemplate="10,20,30" paginatorPosition="bottom"
                          >
 
                 <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
@@ -32,7 +32,7 @@
                         <h:outputText value="#{bundle.ListPropuestaTitle_fechapropuesta}"/>
                     </f:facet>
                     <h:outputText value="#{item.fechapropuesta}">
-                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
                     </h:outputText>
                 </p:column>
                 <p:column sortBy="#{item.detalle}" filterBy="#{item.detalle}">
